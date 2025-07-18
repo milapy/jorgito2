@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios - Comedor Jorgito</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    
+    .main-header {
+      width: 100%;
+      background: linear-gradient(135deg, #ff6f00, #ff8f00);
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .header-logo h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .header-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    .header-nav a:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .header-contact .whatsapp-btn {
+      background-color: #25d366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-contact .whatsapp-btn:hover {
+      background-color: #1eb859;
+      transform: scale(1.05);
+    }
+
+    
+    .page-footer {
+      background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-section h3 {
+      color: #ff6f00;
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .footer-section p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .footer-section ul li:before {
+      content: '▶';
+      color: #ff6f00;
+      position: absolute;
+      left: 0;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #ff6f00;
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background-color: #ff8f00;
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      color: #ccc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #fffdf8;
+      padding-top: 80px;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      background-image: url('https://images.ecestaticos.com/JjMiY54z4BKuT8mzuqiONTlNBt4=/0x109:2119x1301/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb02%2F4cc%2F30d%2Fb024cc30d62f4897628336118f716af1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .services-box {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 650px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .services-box:hover {
+      transform: translateY(-8px);
+    }
+
+    .services-box h1 {
+      color: #ff6f00;
+      margin-bottom: 30px;
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    .services-box p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .services-box ul {
+      list-style-type: none;
+      margin-top: 25px;
+      font-size: 18px;
+      color: #444;
+      padding-left: 0;
+      line-height: 1.8;
+    }
+
+    .services-box ul li {
+      margin-bottom: 15px;
+      padding: 15px;
+      background-color: #f8f8f8;
+      border-radius: 8px;
+      border-left: 4px solid #ff6f00;
+    }
+
+    .btn-retorno {
+      background-color: #fff4e6;
+      color: #ff6f00;
+      border: 2px solid #ff6f00;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      margin: 30px auto;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .btn-retorno:hover {
+      background-color: #ff6f00;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      .header-nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .header-nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .services-box {
+        margin: 20px;
+        padding: 30px;
+      }
+
+      .services-box h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-content">
+      <div class="header-logo">
+        <img src="fotos/logo.jpeg" alt="Comedor Jorgito Logo">
+        <h2>Comedor Jorgito</h2>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Inicio</a>
+        <a href="acercade.html">Nosotros</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="minutas.html">Minutas</a>
+        <a href="menu.html">Menú</a>
+      </nav>
+      <div class="header-contact">
+        <a href="https://wa.me/595982657650" class="whatsapp-btn" >
+          <i class="fab fa-whatsapp"></i> Hacer Pedido
+        </a>
+      </div>
+    </div>
+  </header>
+  <button class="btn-retorno" onclick="history.back()" title="Volver atrás">
+    <i class="fas fa-arrow-left"></i>
+  </button>
+  <div class="content">
+    <div class="services-box">
+      <h1>Nuestros Servicios</h1>
+      <p>En Comedor Jorgito, ofrecemos una variedad de servicios para que disfrutes de nuestras deliciosas comidas de la manera que más te guste.</p>
+      <ul>
+        <li><i class="fas fa-truck"></i> Comidas a domicilio</li>
+        <li><i class="fab fa-whatsapp"></i> Pedidos por WhatsApp</li>
+        <li><i class="fas fa-calendar-alt"></i> Menú especial para eventos</li>
+        <li><i class="fas fa-utensils"></i> Menú diario variado</li>
+      </ul>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Comedor Jorgito</h3>
+        <p>Comidas caseras con el sabor de siempre</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/jorgito_comedor?igsh=MTJ0ZXlwYXU1NXc5Yw=="><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/595982657650"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Contacto</h3>
+       <p><i class="fas fa-map-marker-alt"></i> Doctor Jose Pedro Montero 590/ Doctor Mario Mazzei</p>
+        <p><i class="fas fa-phone-alt"></i> +595 982 657650</p>
+        <p><i class="fas fa-envelope"></i> comedorjorgito17@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Servicios</h3>
+        <ul>
+          <li>Delivery</li>
+          <li>Pedidos por WhatsApp</li>
+          <li>Menú diario</li>
+          <li>Eventos especiales</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Comedor Jorgito. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

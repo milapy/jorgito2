@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Especiales - Comedor Jorgito</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    
+    .main-header {
+      width: 100%;
+      background: linear-gradient(135deg, #ff6f00, #ff8f00);
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .header-logo h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .header-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    .header-nav a:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .header-contact .whatsapp-btn {
+      background-color: #25d366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-contact .whatsapp-btn:hover {
+      background-color: #1eb859;
+      transform: scale(1.05);
+    }
+
+    
+    .page-footer {
+      background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-section h3 {
+      color: #ff6f00;
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .footer-section p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .footer-section ul li:before {
+      content: '▶';
+      color: #ff6f00;
+      position: absolute;
+      left: 0;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #ff6f00;
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background-color: #ff8f00;
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      color: #ccc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #3a3836, #f8f8f8, #ffffff);
+      background-size: 400% 400%;
+      animation: backgroundMove 12s ease infinite;
+      padding-top: 80px;
+    }
+
+    @keyframes backgroundMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .specials-box {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .specials-box h1 {
+      color: #ff6f00;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .specials-slider {
+      position: relative;
+      height: 420px;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1s ease, transform 0.8s ease;
+      transform: translateX(50px);
+      z-index: 0;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      z-index: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .slide h2 {
+      color: #ff6f00;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .slide p {
+      color: #555;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .slider-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 20px;
+    }
+
+    .slider-buttons button {
+      background-color: #ff6f00;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .slider-buttons button:hover {
+      background-color: #e65100;
+      transform: translateY(-2px);
+    }
+
+    .btn-retorno {
+      background-color: #fff4e6;
+      color: #ff6f00;
+      border: 2px solid #ff6f00;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      margin: 30px auto;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .btn-retorno:hover {
+      background-color: #ff6f00;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      .header-nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .header-nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .specials-box {
+        margin: 20px;
+        padding: 30px;
+      }
+
+      .specials-box h1 {
+        font-size: 2rem;
+      }
+
+      .specials-slider {
+        height: 350px;
+      }
+
+      .slide img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-content">
+      <div class="header-logo">
+        <img src="fotos/logo.jpeg" alt="Comedor Jorgito Logo">
+        <h2>Comedor Jorgito</h2>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Inicio</a>
+        <a href="acercade.html">Nosotros</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="minutas.html">Minutas</a>
+        <a href="menu.html">Menú</a>
+      </nav>
+      <div class="header-contact">
+        <a href="https://wa.me/595982657650" class="whatsapp-btn">
+          <i class="fab fa-whatsapp"></i> Hacer Pedido
+        </a>
+      </div>
+    </div>
+  </header>
+  <button class="btn-retorno" onclick="history.back()" title="Volver atrás">
+    <i class="fas fa-arrow-left"></i>
+  </button>
+  <div class="main-content">
+    <div class="specials-box">
+      <h1>Minutas</h1>
+      <div class="specials-slider" id="slider">
+        <div class="slide active">
+          <img src="comidas.img/comidas.img/empanada de carne .jpg" alt="Plato 1">
+          <h2>Empanada de carne</h2>
+          <p><strong>Precio:</strong>4.000 gs</p>
+        </div>
+        <div class="slide">
+          <img src="comidas.img/comidas.img/empanada de pollo.jpg" alt="Plato 2">
+          <h2>Empanada de pollo</h2>
+          <p><strong>Precio:</strong> 4.000 gs</p>
+        </div>
+        <div class="slide">
+          <img src="comidas.img/comidas.img/empanada de jamon y queso.jpg" alt="Plato 3">
+          <h2>Empanada de jamon y queso</h2>
+          <p><strong>Precio:</strong> 4.000 gs</p>
+        </div>
+         <div class="slide">
+          <img src="fotos/jamon.jpeg" alt="Plato 4">
+          <h2>Sandwich de Jamon y Queso</h2>
+          <p><strong>Precio:</strong> 6.000 gs</p>
+        </div>
+         <div class="slide">
+          <img src="fotos/verdura.jpeg" alt="Plato 5">
+          <h2>Sandwich de verduras</h2>
+          <p><strong>Precio:</strong> 6.000 gs</p>
+        </div>
+         <div class="slide">
+          <img src="fotos/sandwich.jpeg" alt="Plato 6">
+          <h2>Sandwich de milanesa de pollo</h2>
+          <p><strong>Precio:</strong> 10.000 gs</p>
+        </div> <div class="slide">
+          <img src="comidas.img/comidas.img/pizzas.jpg" alt="Plato 7">
+          <h2>Pizzas</h2>
+          <p><strong>Precio:</strong> 5.000 gs</p>
+        </div>
+         <div class="slide">
+          <img src="fotos/tortilla.jpeg" alt="Plato 8">
+          <h2>Tortilla</h2>
+          <p><strong>Precio:</strong> 3.500 gs</p>
+        </div>
+         <div class="slide">
+          <img src="comidas.img/comidas.img/pancito.jpg" alt="Plato 9">
+          <h2>Pancito</h2>
+          <p><strong>Precio:</strong> 1.000 gs</p>
+        </div>
+      </div>
+      <div class="slider-buttons">
+        <button onclick="changeSlide(-1)">⟵ Anterior</button>
+        <button onclick="changeSlide(1)">Siguiente ⟶</button>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Comedor Jorgito</h3>
+        <p>Comidas caseras con el sabor de siempre</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/jorgito_comedor?igsh=MTJ0ZXlwYXU1NXc5Yw=="><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/595982657650"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Contacto</h3>
+       <p><i class="fas fa-map-marker-alt"></i> Doctor Jose Pedro Montero 590/ Doctor Mario Mazzei</p>
+        <p><i class="fas fa-phone-alt"></i> +595 982 657650</p>
+        <p><i class="fas fa-envelope"></i> comedorjorgito17@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Servicios</h3>
+        <ul>
+          <li>Delivery</li>
+          <li>Pedidos por WhatsApp</li>
+          <li>Menú diario</li>
+          <li>Eventos especiales</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Comedor Jorgito. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function changeSlide(direction) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+  </script>
+</body>
+</html>
